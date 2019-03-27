@@ -5,12 +5,14 @@ $(document).ready(function () {
     var count = 120;
     var interval = setInterval(function(){
       $("#timer")[0].innerHTML=count;
+      $("#timer").html("<h3>Time Remaining: " + count + " seconds</h3>");
       count--;
       if (count === 0){
         clearInterval(interval);
         $("#timer")[0].innerHTML='Done';
         // or...
-        alert("You're out of time!")[0];
+        alert("You're out of time!");
+        showResults();
       }
     }, 1000);
 
@@ -20,23 +22,51 @@ $(document).ready(function () {
     var submitButton = $("#submit")[0];
     var myQuestions = [
         {
-            question: "what color is the sky?",
+            question: "How much does the largest rubber band ball weigh?",
             answers: {
-                a: "blue",
-                b: "green",
-                c: "purple",
-            },
-            correctAnswer: "a"
-
-        },
-        {
-            question: "what color is grass?",
-            answers: {
-                a: "blue",
-                b: "green",
-                c: "purple",
+                a: "1,369 lbs",
+                b: "2,508 lbs",
+                c: "2 lbs",
             },
             correctAnswer: "b"
+
+        },
+       
+        {
+            question: "Who is credited for discovering natural rubber?",
+            answers: {
+                a: "Abraham Lincoln",
+                b: "George Washington",
+                c: "Chrisopher Columbus",
+            },
+            correctAnswer: "c"
+        },
+        {
+            question: "Who coined the term rubber?",
+            answers: {
+                a: "John Prine",
+                b: "John Mayer",
+                c: "John Priestly",
+            },
+            correctAnswer: "c"
+        },
+        {
+            question: "Who is the biggest consumer of rubber bands on earth?",
+            answers: {
+                a: "US Postal Service",
+                b: "UPS",
+                c: "FedEx",
+            },
+            correctAnswer: "a"
+        },
+        {
+            question: "About how much did Pablo Escobar spend on rubber bands every month?",
+            answers: {
+                a: "$400",
+                b: "$1,500",
+                c: "$2,500",
+            },
+            correctAnswer: "c"
         }
     ];
 
@@ -85,9 +115,9 @@ $(document).ready(function () {
         // for each question...
         myQuestions.forEach((currentQuestion, questionNumber) => {
             // find selected answer
-            const answerContainer = answerContainers[questionNumber];
-            const selector = `input[name=question${questionNumber}]:checked`;
-            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+            var answerContainer = answerContainers[questionNumber];
+            var selector = `input[name=question${questionNumber}]:checked`;
+            var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
             // if answer is correct
             if (userAnswer === currentQuestion.correctAnswer) {
@@ -107,11 +137,18 @@ $(document).ready(function () {
         resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
     }
 
+    function stop () {
+        clearInterval(interval);
+    };
+
+
+
     // display quiz 
     buildQuiz();
+    
 
-    // on submit, show results
-    submitButton.addEventListener("click", showResults);
+    // on submit, show results, stop timer
+    submitButton.addEventListener("click", showResults, stop);
 
 
 
