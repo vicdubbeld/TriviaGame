@@ -80,7 +80,7 @@ $(document).ready(function () {
         // for each question...
         myQuestions.forEach((currentQuestion, questionNumber) => {
             // we'll want to store the list of answer choices
-            const answers = [];
+            var answers = [];
 
             // and for each available answer...
             for (letter in currentQuestion.answers) {
@@ -107,8 +107,8 @@ $(document).ready(function () {
 
     function showResults() {
         // gather answer containers from our quiz
-        const answerContainers = quizContainer.querySelectorAll(".answers");
-
+        var answerContainers = quizContainer.querySelectorAll(".answers");
+ 
         // keep track of user's answers
         let numCorrect = 0;
 
@@ -122,15 +122,8 @@ $(document).ready(function () {
             // if answer is correct
             if (userAnswer === currentQuestion.correctAnswer) {
                 // add to the number of correct answers
-                numCorrect++;
-
-                // color the answers green
-                answerContainers[questionNumber].style.color = "lightgreen";
-            } else {
-                // if answer is wrong or blank
-                // color the answers red
-                answerContainers[questionNumber].style.color = "red";
-            }
+                numCorrect++; 
+            } 
         });
 
         // show number of correct answers out of total
@@ -146,10 +139,11 @@ $(document).ready(function () {
     // display quiz 
     buildQuiz();
     
+    
 
     // on submit, show results, stop timer
     submitButton.addEventListener("click", showResults, stop);
-
+    // $("#showResults").click("#submit");
 
 
 })    

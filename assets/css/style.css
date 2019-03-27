@@ -4,3 +4,11 @@ h1, h2, #timer, #quiz, #submit, #results {
 #quiz {
    background-image: url("")
 }
+body {
+    background-color: bisque;
+}
+iframe {
+    border-color: rgb(207, 92, 92);
+    border-width: thick;
+    
+}
