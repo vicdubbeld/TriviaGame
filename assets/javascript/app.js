@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    var handler;
+
+   
 
 
     // timer
@@ -13,6 +16,7 @@ $(document).ready(function () {
         // or...
         alert("You're out of time!");
         showResults();
+        
       }
     }, 1000);
 
@@ -24,51 +28,52 @@ $(document).ready(function () {
         {
             question: "How much does the largest rubber band ball weigh?",
             answers: {
-                a: "1,369 lbs",
-                b: "2,508 lbs",
-                c: "2 lbs",
+                a: "1,369 lbs<br />",
+                b: "2,508 lbs<br />",
+                c: "2 lbs<br /><br />",
             },
             correctAnswer: "b"
 
         },
        
         {
-            question: "Who is credited for discovering natural rubber?",
+            question: "Who is credited for discovering natural rubber?<br />",
             answers: {
-                a: "Abraham Lincoln",
-                b: "George Washington",
-                c: "Chrisopher Columbus",
+                a: "Abraham Lincoln<br />",
+                b: "George Washington<br />",
+                c: "Chrisopher Columbus<br /><br />",
             },
             correctAnswer: "c"
         },
         {
-            question: "Who coined the term rubber?",
+            question: "Who coined the term rubber?<br />",
             answers: {
-                a: "John Prine",
-                b: "John Mayer",
-                c: "John Priestly",
+                a: "John Prine<br />",
+                b: "John Mayer<br />",
+                c: "John Priestly<br /><br />",
             },
             correctAnswer: "c"
         },
         {
-            question: "Who is the biggest consumer of rubber bands on earth?",
+            question: "Who is the biggest consumer of rubber bands on earth?<br />",
             answers: {
-                a: "US Postal Service",
-                b: "UPS",
-                c: "FedEx",
+                a: "US Postal Service<br />",
+                b: "UPS<br />",
+                c: "FedEx<br /><br />",
             },
             correctAnswer: "a"
         },
         {
-            question: "About how much did Pablo Escobar spend on rubber bands every month?",
+            question: "About how much did Pablo Escobar spend on rubber bands every month?<br />",
             answers: {
-                a: "$400",
-                b: "$1,500",
-                c: "$2,500",
+                a: "$400<br />",
+                b: "$1,500<br />",
+                c: "$2,500<br />",
             },
             correctAnswer: "c"
         }
     ];
+  
 
 
 
@@ -127,23 +132,24 @@ $(document).ready(function () {
         });
 
         // show number of correct answers out of total
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+        resultsContainer.innerHTML = `You scored ${numCorrect} out of ${myQuestions.length} correct!`;
     }
 
     function stop () {
-        clearInterval(interval);
+        clearInterval(count);
     };
+
+    
 
 
 
     // display quiz 
     buildQuiz();
+    stop();
     
     
-
     // on submit, show results, stop timer
     submitButton.addEventListener("click", showResults, stop);
-    // $("#showResults").click("#submit");
-
+   
 
 })    

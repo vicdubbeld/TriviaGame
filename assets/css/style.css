@@ -2,13 +2,21 @@ h1, h2, #timer, #quiz, #submit, #results {
     font-family: 'Open Sans', sans-serif;
 }
 #quiz {
-   background-image: url("")
+   background-image: url("");
+   
 }
 body {
     background-color: bisque;
+    text-align: center;
 }
 iframe {
     border-color: rgb(207, 92, 92);
     border-width: thick;
-    
+    margin: 30px;
 }
+button {
+    margin: 10px;
+}
+
+
+
